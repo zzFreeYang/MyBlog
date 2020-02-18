@@ -68,3 +68,6 @@ spring:
       filter:
         stat:
           log-slow-sql: true
+
+  thymeleaf:
+    cache: false
