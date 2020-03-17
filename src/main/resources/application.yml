@@ -71,3 +71,9 @@ spring:
 
   thymeleaf:
     cache: false
+
+logging:
+  level:
+    com:
+      springboot:
+        mapper: debug

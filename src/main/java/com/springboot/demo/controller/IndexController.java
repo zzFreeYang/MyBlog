@@ -24,8 +24,6 @@ public class IndexController {
         m.addAttribute("accountList",list);
     return "account";
 
-
-
 }
 
 }
