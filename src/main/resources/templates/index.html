@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>欢迎</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--    BootStrap 引入  -->
+    <script type="text/javascript" th:src="@{/js/jquery/2.0.0/jquery.min.js}"></script>
+    <link rel="stylesheet"   type="text/css"  th:href="@{/css/bootstrap/3.3.6/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/js/bootstrap/3.3.6/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type = "text/css" th:href="@{/css/grid.css}">   <!-- 引入表格css-->
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 ">一共12列</div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!--简短的实验可以看出: col-xs-1占1列，col-xs-2占2列，超过长度就会自动换行 -->
+        <div class="col-xs-1 "></div>
+        <div class="col-xs-2 ">2列</div>
+        <div class="col-xs-3 ">3列</div>
+        <div class="col-xs-4 ">4列</div>
+        <div class="col-xs-5 ">1234567</div>
+    </div>
+</div>
+
+<br>
+<input type="text" class="form-control" value="帐号:">
+<br>
+
+<span class="text-info" >请输入密码</span>
+<input type="password" class="form-control" value="">
+<br>
+
+<button class="btn btn-success" >登录</button>
+
+
+
+
+
+
+</body>
+</html>
