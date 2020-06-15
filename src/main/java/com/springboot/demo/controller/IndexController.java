@@ -1,8 +1,10 @@
 package com.springboot.demo.controller;
 
 import com.springboot.demo.bean.Account;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ import java.util.List;
 //@RestController
 public class IndexController {
 
-    @RequestMapping("/account")
+    @GetMapping("/account")
     public String index(Model m){
         List<Account> list = new ArrayList<Account>();
         list.add(new Account("KangKang", "康康", "e10adc3949ba59abbe56e", "超级管理员", "17777777777"));
@@ -23,7 +25,14 @@ public class IndexController {
 
         m.addAttribute("accountList",list);
     return "account";
-
 }
+
+    @ApiOperation(value="跳转到欢迎界面")
+    @GetMapping("/index")
+    public String hello(){
+
+        return "index";
+    }
+
 
 }
