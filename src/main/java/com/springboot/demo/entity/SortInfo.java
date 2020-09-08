@@ -1,15 +1,17 @@
-package com.springboot.demo.bean;
+package com.springboot.demo.entity;
 
 import java.util.Date;
 
-public class ArticleMessage {
+public class SortInfo {
     private Long id;
 
-    private Long article_id;
+    private String name;
 
-    private Long message_id;
+    private Byte number;
 
     private Date create_by;
+
+    private Date modified_by;
 
     private Boolean is_effective;
 
@@ -21,20 +23,20 @@ public class ArticleMessage {
         this.id = id;
     }
 
-    public Long getArticle_id() {
-        return article_id;
+    public String getName() {
+        return name;
     }
 
-    public void setArticle_id(Long article_id) {
-        this.article_id = article_id;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Long getMessage_id() {
-        return message_id;
+    public Byte getNumber() {
+        return number;
     }
 
-    public void setMessage_id(Long message_id) {
-        this.message_id = message_id;
+    public void setNumber(Byte number) {
+        this.number = number;
     }
 
     public Date getCreate_by() {
@@ -43,6 +45,14 @@ public class ArticleMessage {
 
     public void setCreate_by(Date create_by) {
         this.create_by = create_by;
+    }
+
+    public Date getModified_by() {
+        return modified_by;
+    }
+
+    public void setModified_by(Date modified_by) {
+        this.modified_by = modified_by;
     }
 
     public Boolean getIs_effective() {

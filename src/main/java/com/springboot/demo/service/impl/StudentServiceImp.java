@@ -1,6 +1,6 @@
 package com.springboot.demo.service.impl;
 
-import com.springboot.demo.bean.Student;
+import com.springboot.demo.entity.Student;
 import com.springboot.demo.mapper.StudentMapper;
 import com.springboot.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

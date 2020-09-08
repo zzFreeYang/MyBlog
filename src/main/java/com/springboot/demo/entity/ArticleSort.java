@@ -1,13 +1,13 @@
-package com.springboot.demo.bean;
+package com.springboot.demo.entity;
 
 import java.util.Date;
 
-public class SortInfo {
+public class ArticleSort {
     private Long id;
 
-    private String name;
+    private Long sort_id;
 
-    private Byte number;
+    private Long article_id;
 
     private Date create_by;
 
@@ -23,20 +23,20 @@ public class SortInfo {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Long getSort_id() {
+        return sort_id;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setSort_id(Long sort_id) {
+        this.sort_id = sort_id;
     }
 
-    public Byte getNumber() {
-        return number;
+    public Long getArticle_id() {
+        return article_id;
     }
 
-    public void setNumber(Byte number) {
-        this.number = number;
+    public void setArticle_id(Long article_id) {
+        this.article_id = article_id;
     }
 
     public Date getCreate_by() {

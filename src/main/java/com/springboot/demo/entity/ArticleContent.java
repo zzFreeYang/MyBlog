@@ -1,4 +1,4 @@
-package com.springboot.demo.bean;
+package com.springboot.demo.entity;
 
 import java.util.Date;
 
@@ -50,6 +50,6 @@ public class ArticleContent {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+                                                this.content = content == null ? null : content.trim();
     }
 }

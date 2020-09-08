@@ -1,4 +1,4 @@
-package com.springboot.demo.bean;
+package com.springboot.demo.entity;
 
 import java.io.Serializable;
 

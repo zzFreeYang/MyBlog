@@ -1,9 +1,13 @@
 package com.springboot.demo.mapper;
 
-import com.springboot.demo.bean.ArticleContent;
-import com.springboot.demo.bean.ArticleContentExample;
-import java.util.List;
+import com.springboot.demo.entity.ArticleContent;
+import com.springboot.demo.entity.ArticleContentExample;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
+@Mapper
 public interface ArticleContentMapper {
     int deleteByPrimaryKey(Long id);
 

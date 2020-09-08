@@ -1,9 +1,13 @@
 package com.springboot.demo.mapper;
 
-import com.springboot.demo.bean.ArticleInfo;
-import com.springboot.demo.bean.ArticleInfoExample;
-import java.util.List;
+import com.springboot.demo.entity.ArticleInfo;
+import com.springboot.demo.entity.ArticleInfoExample;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
+@Mapper
 public interface ArticleInfoMapper {
     int deleteByPrimaryKey(Long id);
 

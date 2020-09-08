@@ -1,9 +1,13 @@
 package com.springboot.demo.mapper;
 
-import com.springboot.demo.bean.Message;
-import com.springboot.demo.bean.MessageExample;
-import java.util.List;
+import com.springboot.demo.entity.Message;
+import com.springboot.demo.entity.MessageExample;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
+@Mapper
 public interface MessageMapper {
     int deleteByPrimaryKey(Long id);
 

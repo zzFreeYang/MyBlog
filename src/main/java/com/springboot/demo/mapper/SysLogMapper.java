@@ -1,9 +1,13 @@
 package com.springboot.demo.mapper;
 
-import com.springboot.demo.bean.SysLog;
-import com.springboot.demo.bean.SysLogExample;
-import java.util.List;
+import com.springboot.demo.entity.SysLog;
+import com.springboot.demo.entity.SysLogExample;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
+@Mapper
 public interface SysLogMapper {
     int deleteByPrimaryKey(Long id);
 

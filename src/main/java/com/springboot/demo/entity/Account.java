@@ -1,5 +1,9 @@
-package com.springboot.demo.bean;
+package com.springboot.demo.entity;
 
+/**
+ *    账户类
+ *
+ */
 public class Account {
 
     private String account;

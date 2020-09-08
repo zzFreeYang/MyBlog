@@ -1,6 +1,6 @@
 package com.springboot.demo.service;
 
-import com.springboot.demo.bean.Student;
+import com.springboot.demo.entity.Student;
 
 public interface StudentService {
     int add(Student student);

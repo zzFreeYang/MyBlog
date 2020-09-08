@@ -1,9 +1,13 @@
 package com.springboot.demo.mapper;
 
-import com.springboot.demo.bean.SortInfo;
-import com.springboot.demo.bean.SortInfoExample;
-import java.util.List;
+import com.springboot.demo.entity.SortInfo;
+import com.springboot.demo.entity.SortInfoExample;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
+@Mapper
 public interface SortInfoMapper {
     int deleteByPrimaryKey(Long id);
 

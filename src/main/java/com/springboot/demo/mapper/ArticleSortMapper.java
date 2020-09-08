@@ -1,9 +1,13 @@
 package com.springboot.demo.mapper;
 
-import com.springboot.demo.bean.ArticleSort;
-import com.springboot.demo.bean.ArticleSortExample;
-import java.util.List;
+import com.springboot.demo.entity.ArticleSort;
+import com.springboot.demo.entity.ArticleSortExample;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
+@Mapper
 public interface ArticleSortMapper {
     int deleteByPrimaryKey(Long id);
 

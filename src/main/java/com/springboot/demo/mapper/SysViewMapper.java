@@ -1,9 +1,13 @@
 package com.springboot.demo.mapper;
 
-import com.springboot.demo.bean.SysView;
-import com.springboot.demo.bean.SysViewExample;
-import java.util.List;
+import com.springboot.demo.entity.SysView;
+import com.springboot.demo.entity.SysViewExample;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
+@Mapper
 public interface SysViewMapper {
     int deleteByPrimaryKey(Long id);
 

@@ -1,5 +1,5 @@
 package com.springboot.demo.mapper;
-import com.springboot.demo.bean.Student;
+import com.springboot.demo.entity.Student;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
