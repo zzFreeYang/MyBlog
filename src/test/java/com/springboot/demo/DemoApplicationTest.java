@@ -1,15 +1,12 @@
 package com.springboot.demo;
 
-import com.springboot.demo.bean.Student;
+import com.springboot.demo.entity.Student;
 import com.springboot.demo.service.StudentService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import javax.annotation.PostConstruct;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

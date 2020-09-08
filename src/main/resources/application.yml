@@ -5,8 +5,12 @@ zzFreeY:
 
 server:
   port: 8080
+  tomcat:
+    uri-encoding: UTF-8
 
 spring:
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/template/btzero/
   datasource:
     # 数据库访问配置, 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
@@ -68,6 +72,12 @@ spring:
       filter:
         stat:
           log-slow-sql: true
+  http:
+    encoding:
+      charset: utf-8
+      force: true
+      enabled: true
+
 
   thymeleaf:
     cache: false
@@ -76,5 +86,13 @@ logging:
   level:
     com:
       springboot:
-        mapper: debug
+        demo:
+          mapper: debug
 
+  ## MyBatis相关配置
+mybatis:
+  type-aliases-package: com.springboot.demo.entity
+  mapper-locations: classpath*:mapper/*.xml
+
+#  mybatis.type-aliases-package=cn.wmyskxz.blog.entity
+#  mybatis.mapper-locations=classpath:mapper/*.xml
