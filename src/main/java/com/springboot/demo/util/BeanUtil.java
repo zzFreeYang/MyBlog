@@ -2,10 +2,8 @@ package com.springboot.demo.util;
 
 import net.sf.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class BeanUtil {
 
@@ -74,6 +72,27 @@ public class BeanUtil {
 
     }
 
+    /**
+     * 返回当前的日期，"20061206011123"
+     *
+     * @return "20061206011123"
+     */
+    public static String getCurrentTimeString() {
 
+        SimpleDateFormat dateFormate = new SimpleDateFormat("yyyyMMddHHmmss");
+        return dateFormate.format(getNowDate());
+    }
+
+    /**
+     * 获取东八区的时间
+     *
+     * @author baojl
+     * @date Apr 10, 2012
+     * @return
+     */
+    public static Date getNowDate() {
+        Date date = Calendar.getInstance().getTime();
+        return date;
+    }
 
 }
