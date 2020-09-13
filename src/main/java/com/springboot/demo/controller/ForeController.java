@@ -116,7 +116,8 @@ public class ForeController  extends BaseController{
             @ApiImplicitParam(name = "name", value = "用户自定义的名称", required = true, dataType = "String")
     })
     @PostMapping("comment/article/{id}")
-    public String addArticleComment(@PathVariable Long id, @RequestBody ArticleCommentDto articleCommentDto, HttpServletRequest request) {
+    public String addArticleComment(@PathVariable Long id, @RequestBody(required = false) ArticleCommentDto articleCommentDto, HttpServletRequest request) {
+
 
         String ip = request.getRemoteAddr();
         articleCommentDto.setIp(ip);
