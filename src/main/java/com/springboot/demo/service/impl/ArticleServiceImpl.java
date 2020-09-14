@@ -45,6 +45,8 @@ public class ArticleServiceImpl implements ArticleService {
         ArticleInfo articleInfo = new ArticleInfo();
         articleInfo.setTitle(articleDto.getTitle());
         articleInfo.setSummary(articleDto.getSummary());
+        articleInfo.setCreate_by(BeanUtil.getNowDate());
+        articleInfo.setModified_by(BeanUtil.getNowDate());
         articleInfoMapper.insertSelective(articleInfo);
         // 获取刚才插入文章信息的ID
         Long articleId = getArticleLastestId();
@@ -52,20 +54,28 @@ public class ArticleServiceImpl implements ArticleService {
         ArticlePicture articlePicture = new ArticlePicture();
         articlePicture.setPictureUrl(articleDto.getPictureUrl());
         articlePicture.setArticleId(articleId);
+        articlePicture.setCreateBy(BeanUtil.getNowDate());
+        articlePicture.setModifiedBy(BeanUtil.getNowDate());
         articlePictureMapper.insertSelective(articlePicture);
         // 增加文章内容信息表 - content/articleId
         ArticleContent articleContent = new ArticleContent();
         articleContent.setContent(articleDto.getContent());
-//        articleContent.setArticleId(articleId);
+        articleContent.setArticle_id(articleId);
+        articleContent.setCreate_by(BeanUtil.getNowDate());
+        articleContent.setModifield_by(BeanUtil.getNowDate());
         articleContentMapper.insertSelective(articleContent);
         // 增加文章分类信息表 - articleId/categoryId
         ArticleCategory articleCategory = new ArticleCategory();
         articleCategory.setArticleId(articleId);
         articleCategory.setCategoryId(articleDto.getCategoryId());
+        articleCategory.setCreateBy(BeanUtil.getNowDate());
+        articleCategory.setModifiedBy(BeanUtil.getNowDate());
         articleCategoryMapper.insertSelective(articleCategory);
         // 对应文章的数量要加1
         CategoryInfo categoryInfo = categoryInfoMapper.selectByPrimaryKey(articleCategory.getCategoryId());
         categoryInfo.setNumber((byte) (categoryInfo.getNumber() + 1));
+        categoryInfo.setCreateBy(BeanUtil.getNowDate());
+        categoryInfo.setModifiedBy(BeanUtil.getNowDate());
         categoryInfoMapper.updateByPrimaryKeySelective(categoryInfo);
     }
 
@@ -126,29 +136,29 @@ public class ArticleServiceImpl implements ArticleService {
         articleInfo.setId(articleDto.getId());
         articleInfo.setTitle(articleDto.getTitle());
         articleInfo.setSummary(articleDto.getSummary());
-//        articleInfo.setIsTop(articleDto.getTop());
+        articleInfo.setIs_top(articleDto.getTop());
         articleInfo.setTraffic(articleDto.getTraffic());
         articleInfoMapper.updateByPrimaryKeySelective(articleInfo);
         // 更新文章题图信息数据
         ArticlePictureExample pictureExample = new ArticlePictureExample();
         pictureExample.or().andArticleIdEqualTo(articleDto.getId());
         ArticlePicture articlePicture = articlePictureMapper.selectByExample(pictureExample).get(0);
-//        articlePicture.setId(articleDto.getArticlePictureId());
+        articlePicture.setId(articleDto.getArticlePictureId());
         articlePicture.setPictureUrl(articleDto.getPictureUrl());
         articlePictureMapper.updateByPrimaryKeySelective(articlePicture);
         // 更新文章内容信息数据
         ArticleContentExample contentExample = new ArticleContentExample();
-//        contentExample.or().andArticleIdEqualTo(articleDto.getId());
+        contentExample.or().andArticle_idEqualTo(articleDto.getId());
         ArticleContent articleContent = articleContentMapper.selectByExample(contentExample).get(0);
-//		articleContent.setArticleId(articleDto.getId());
-//		articleContent.setId(articleDto.getArticleContentId());
+		articleContent.setArticle_id(articleDto.getId()); //  ????
+		articleContent.setId(articleDto.getArticleContentId());
         articleContent.setContent(articleDto.getContent());
         articleContentMapper.updateByPrimaryKeySelective(articleContent);
         // 更新文章分类信息表
         ArticleCategoryExample categoryExample = new ArticleCategoryExample();
         categoryExample.or().andArticleIdEqualTo(articleDto.getId());
         ArticleCategory articleCategory = articleCategoryMapper.selectByExample(categoryExample).get(0);
-//        articleCategory.setId(articleDto.getArticleCategoryId());
+        articleCategory.setId(articleDto.getArticleCategoryId());
         articleCategory.setCategoryId(articleDto.getCategoryId());
         articleCategoryMapper.updateByPrimaryKeySelective(articleCategory);
     }
@@ -169,8 +179,8 @@ public class ArticleServiceImpl implements ArticleService {
         articleDto.setId(articleInfo.getId());
         articleDto.setTitle(articleInfo.getTitle());
         articleDto.setSummary(articleInfo.getSummary());
-//        articleDto.setTop(articleInfo.getIsTop());
-//        articleDto.setCreateBy(articleInfo.getCreateBy());
+        articleDto.setTop(articleInfo.getIs_top());
+        articleDto.setCreateBy(articleInfo.getCreate_by());
         articleInfo.setTraffic(articleInfo.getTraffic() + 1);// 文章访问量要加1
         articleDto.setTraffic(articleInfo.getTraffic() + 1);
         articleInfoMapper.updateByPrimaryKey(articleInfo);

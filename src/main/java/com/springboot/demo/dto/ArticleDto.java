@@ -15,7 +15,7 @@ public class ArticleDto {
     private Long id;                // 主键
     private String title;           // 文章标题
     private String summary;         // 文章简介
-    private Boolean isTop;          // 文章是否置顶
+    private Boolean top;          // 文章是否置顶
     private Integer traffic;        // 文章浏览量
     private Date createBy;          // 文章创建时间
 
@@ -69,11 +69,11 @@ public class ArticleDto {
     }
 
     public Boolean getTop() {
-        return isTop;
+        return top;
     }
 
-    public void setTop(Boolean top) {
-        isTop = top;
+    public void setTop(Boolean top1) {
+        top = top1;
     }
 
     public Integer getTraffic() {

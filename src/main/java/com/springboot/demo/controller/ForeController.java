@@ -5,6 +5,7 @@ import com.springboot.demo.dto.ArticleDto;
 import com.springboot.demo.dto.ArticleWithPictureDto;
 import com.springboot.demo.entity.CategoryInfo;
 import com.springboot.demo.entity.Comment;
+import com.springboot.demo.service.ArticleService;
 import com.springboot.demo.util.BeanUtil;
 import com.springboot.demo.util.Markdown2HtmlUtil;
 import io.swagger.annotations.ApiImplicitParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -150,6 +152,11 @@ public class ForeController  extends BaseController{
         return null;
     }
 
+    @PostMapping("addBlog")
+    public String addBlog(@RequestBody ArticleDto articleDto, HttpServletRequest request){
+        articleService.addArticle(articleDto);
+        return  "";
+    }
 
 
 
