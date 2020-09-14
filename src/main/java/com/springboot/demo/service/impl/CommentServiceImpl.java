@@ -8,7 +8,9 @@ import com.springboot.demo.entity.Comment;
 import com.springboot.demo.mapper.ArticleCommentMapper;
 import com.springboot.demo.mapper.CommentMapper;
 import com.springboot.demo.service.CommentService;
+import com.springboot.demo.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -44,6 +46,8 @@ public class CommentServiceImpl implements CommentService {
         comment.setName(articleCommentDto.getName());
         comment.setEmail(articleCommentDto.getEmail());
         comment.setContent(articleCommentDto.getContent());
+        comment.setCreateBy(BeanUtil.getNowDate());
+        comment.setIsEffective(true);
         addComment(comment);
         // 再更新tbl_article_comment作关联
         CommentExample example = new CommentExample();
@@ -52,6 +56,8 @@ public class CommentServiceImpl implements CommentService {
         ArticleComment articleComment = new ArticleComment();
         articleComment.setCommentId(lastestCommentId);
         articleComment.setArticleId(articleCommentDto.getArticleId());
+        articleComment.setCreateBy(BeanUtil.getNowDate());
+        articleComment.setIsEffective(true);
         articleCommentMapper.insertSelective(articleComment);
     }
 
@@ -112,22 +118,23 @@ public class CommentServiceImpl implements CommentService {
         List<ArticleComment> articleComments = articleCommentMapper.selectByExample(example);
         // 填充对应的评论信息
         for (ArticleComment articleComment : articleComments) {
-            if (true == articleComment.getIsEffective()) {
+            if (true == ( articleComment.getIsEffective())){
                 ArticleCommentDto articleCommentDto = new ArticleCommentDto();
                 articleCommentDto.setArticleCommentId(articleComment.getId());
                 articleCommentDto.setArticleId(articleComment.getArticleId());
                 articleCommentDto.setCreateBy(articleComment.getCreateBy());
                 // 查询对应的评论信息
                 Comment comment = commentMapper.selectByPrimaryKey(articleComment.getCommentId());
-                articleCommentDto.setId(comment.getId());
-                articleCommentDto.setContent(comment.getContent());
-                articleCommentDto.setEmail(comment.getEmail());
-                articleCommentDto.setIp(comment.getIp());
-                articleCommentDto.setName(comment.getName());
-                comments.add(articleCommentDto);
+                if(BeanUtil.isNotEmpty(comment)){
+                    articleCommentDto.setId(comment.getId());
+                    articleCommentDto.setContent(comment.getContent());
+                    articleCommentDto.setEmail(comment.getEmail());
+                    articleCommentDto.setIp(comment.getIp());
+                    articleCommentDto.setName(comment.getName());
+                    comments.add(articleCommentDto);
+                }
             }
         }
         return comments;
     }
-
 }
