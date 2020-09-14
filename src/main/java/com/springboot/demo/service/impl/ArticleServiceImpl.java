@@ -164,18 +164,17 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public ArticleDto getOneById(Long id) {
         ArticleDto articleDto = new ArticleDto();
-        // 填充文章基础信息
+        // 填充文章基础信息  tbl_article_info基础字段
         ArticleInfo articleInfo = articleInfoMapper.selectByPrimaryKey(id);
         articleDto.setId(articleInfo.getId());
         articleDto.setTitle(articleInfo.getTitle());
         articleDto.setSummary(articleInfo.getSummary());
 //        articleDto.setTop(articleInfo.getIsTop());
 //        articleDto.setCreateBy(articleInfo.getCreateBy());
-        // 文章访问量要加1
-        articleInfo.setTraffic(articleInfo.getTraffic() + 1);
+        articleInfo.setTraffic(articleInfo.getTraffic() + 1);// 文章访问量要加1
         articleDto.setTraffic(articleInfo.getTraffic() + 1);
         articleInfoMapper.updateByPrimaryKey(articleInfo);
-        // 填充文章内容信息
+        // 填充文章内容信息   Content 内容
         ArticleContentExample example = new ArticleContentExample();
         example.or().andIdEqualTo(id);
         List<ArticleContent> retList = articleContentMapper.selectByExample(example);
@@ -254,7 +253,7 @@ public class ArticleServiceImpl implements ArticleService {
             articleWithPictureDto.setId(articleInfo.getId());
             articleWithPictureDto.setTitle(articleInfo.getTitle());
             articleWithPictureDto.setSummary(articleInfo.getSummary());
-//            articleWithPictureDto.setTop(articleInfo.getIsTop());
+            articleWithPictureDto.setTop(articleInfo.getIs_top());
             articleWithPictureDto.setTraffic(articleInfo.getTraffic());
             // 填充文章图片信息
             ArticlePictureExample example2 = new ArticlePictureExample();
@@ -370,7 +369,7 @@ public class ArticleServiceImpl implements ArticleService {
             articleWithPictureDto.setId(articleInfo.getId());
             articleWithPictureDto.setTitle(articleInfo.getTitle());
             articleWithPictureDto.setSummary(articleInfo.getSummary());
-//            articleWithPictureDto.setTop(articleInfo.getIsTop());
+            articleWithPictureDto.setTop(articleInfo.getIs_top());
             articleWithPictureDto.setTraffic(articleInfo.getTraffic());
             // 填充文章题图信息
             ArticlePictureExample example1 = new ArticlePictureExample();

@@ -5,6 +5,7 @@ import com.springboot.demo.dto.ArticleDto;
 import com.springboot.demo.dto.ArticleWithPictureDto;
 import com.springboot.demo.entity.CategoryInfo;
 import com.springboot.demo.entity.Comment;
+import com.springboot.demo.util.BeanUtil;
 import com.springboot.demo.util.Markdown2HtmlUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -143,6 +144,7 @@ public class ForeController  extends BaseController{
 
         String ip = request.getRemoteAddr();
         comment.setIp(ip);
+        comment.setCreateBy(BeanUtil.getNowDate());
         commentService.addComment(comment);
 
         return null;
