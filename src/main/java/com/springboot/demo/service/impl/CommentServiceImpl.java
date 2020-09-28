@@ -1,5 +1,6 @@
 package com.springboot.demo.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.springboot.demo.entity.ArticleComment;
 import com.springboot.demo.entity.ArticleCommentExample;
 import com.springboot.demo.entity.CommentExample;
@@ -9,13 +10,20 @@ import com.springboot.demo.mapper.ArticleCommentMapper;
 import com.springboot.demo.mapper.CommentMapper;
 import com.springboot.demo.service.CommentService;
 import com.springboot.demo.util.BeanUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+@Slf4j
 @Service
+@CacheConfig(cacheNames = "Comment")   //cache的名字
 public class CommentServiceImpl implements CommentService {
     @Autowired
     CommentMapper commentMapper;
@@ -96,12 +104,19 @@ public class CommentServiceImpl implements CommentService {
      *
      * @return
      */
+    @Cacheable     //listAllComment方法的返回，会放到缓存里面去
     @Override
     public List<Comment> listAllComment() {
         // 无条件查询即返回所有
         CommentExample example = new CommentExample();
         return commentMapper.selectByExample(example);
     }
+
+    //CacheEvict注解清除缓存
+    @CacheEvict
+    @Override
+    public void reloadComment(){}
+
 
     /**
      * 获取对应文章下的所有评论信息
@@ -136,5 +151,45 @@ public class CommentServiceImpl implements CommentService {
             }
         }
         return comments;
+    }
+
+    /**
+     * 分页查询所有留言--RowBounds
+     * @param rowBounds
+     * @return
+     */
+    @Override
+    public List<Comment> findAllCommentWithRowBound(RowBounds rowBounds) {
+
+        log.info("========================== start ================================");
+        commentMapper.findAllCommentWithRowBound(new RowBounds(1,3)).forEach(c -> log.info("Page(1) Comment {}",c.getId()));
+        log.info("每页三个，取第一页");
+        commentMapper.findAllCommentWithRowBound(new RowBounds(3,3)).forEach(c -> log.info("Page(2) Comment {}",c.getId()));
+        log.info("每页三个，取第二页");
+        commentMapper.findAllCommentWithRowBound(new RowBounds(1,0)).forEach(c -> log.info("Page(1) Comment {}",c.getId()));
+        log.info("当limt=0时返回所有");
+        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        commentMapper.findAllCommentWithParam(1,3).forEach(c->log.info("Page(1) Comment {}",c.getId()));
+        List<Comment> list = commentMapper.findAllCommentWithParam(2,3);
+        PageInfo page = new PageInfo(list);
+        log.info("PageInfo:{}",page);
+        log.info("========================== end ================================");
+
+
+        CommentExample example = new CommentExample();
+        return commentMapper.selectByExample(example);
+    }
+
+    /**
+     *分页查询所有留言--pagenNum
+     * @param pagenNum
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public List<Comment> findAllCommentWithParam(int pagenNum, int pageSize) {
+        // 无条件查询即返回所有
+        CommentExample example = new CommentExample();
+        return commentMapper.selectByExample(example);
     }
 }
