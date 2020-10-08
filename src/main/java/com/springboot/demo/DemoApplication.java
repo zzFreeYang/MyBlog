@@ -34,8 +34,35 @@ public class DemoApplication implements ApplicationRunner {
             log.info("Reading from cache.");
             commentService.listAllComment();
         }
-            commentService.reloadComment();
+//            commentService.reloadComment();   //清理缓存的注解
+            Thread.sleep(5_000);
             log.info("Reading after refresh");
             commentService.listAllComment().forEach(c ->log.info("Comment"));
     }
+
+
+    /**
+     *  缓存测试Demo
+     */
+//    @Override
+//    public void run(ApplicationArguments args) throws Exception {
+//        //测试Cache的使用
+//        log.info("  ===========  start test cache   ===========    ");
+//        for(int i = 0 ; i < 10 ; i++){
+//            log.info("Reading from cache.");
+//            commentService.listAllComment();
+//        }
+////            commentService.reloadComment();   //清理缓存的注解
+//        Thread.sleep(5_000);
+//        log.info("Reading after refresh");
+//        commentService.listAllComment().forEach(c ->log.info("Comment"));
+//    }
+
+
+
+
+
+
+
+
 }

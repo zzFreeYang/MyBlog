@@ -2,6 +2,8 @@ package com.springboot.demo.service;
 
 import com.springboot.demo.dto.ArticleCommentDto;
 import com.springboot.demo.entity.Comment;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -20,4 +22,10 @@ public interface CommentService {
     List<Comment> listAllComment();
 
     List<ArticleCommentDto> listAllArticleCommentById(Long id);
+
+    List<Comment> findAllCommentWithRowBound(RowBounds rowBounds);
+    List<Comment> findAllCommentWithParam(@Param("pageNum") int pagenNum ,
+                                          @Param("pageSize")int pageSize);
+
+    void  reloadComment();
 }

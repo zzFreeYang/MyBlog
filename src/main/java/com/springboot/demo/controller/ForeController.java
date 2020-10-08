@@ -152,12 +152,32 @@ public class ForeController  extends BaseController{
         return null;
     }
 
+    /**
+     * 增加一个文章
+     * @param articleDto
+     * @param request
+     * @return
+     */
     @PostMapping("addBlog")
     public String addBlog(@RequestBody ArticleDto articleDto, HttpServletRequest request){
         articleService.addArticle(articleDto);
         return  "";
     }
-
-
-
+//    /**
+//     * 获取所有的留言信息 --通过参数
+//     */
+//    @ApiOperation("获取所有的留言信息")
+//    @GetMapping("comment/list")
+//    public List<Comment> findAllCommentWithParam() {
+//        return commentService.listAllComment();
+//    }
+//
+//    /**
+//     * 获取所有的留言信息 --通过RowBound
+//     */
+//    @ApiOperation("获取所有的留言信息")
+//    @GetMapping("comment/list")
+//    public List<Comment> findAllCommentWithRowBound() {
+//        return commentService.listAllComment();
+//    }
 }
