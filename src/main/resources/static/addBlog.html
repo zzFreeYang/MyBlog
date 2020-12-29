@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>zzFree个人博客</title>
+
+    <!-- 引入 JQ 和 Bootstrap -->
+    <script src="js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <!-- 引入自己的CSS -->
+    <link href="css/about.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<!--引入头部-->
+<script language="javascript" type="text/javascript" src="js/header.js"></script>
+
+<!--主体内容-->
+<div id="content">
+    <div style="margin-top: 60px;">
+        <label>Add Blog：</label>
+    </div>
+    <!--新增文章-->
+    <div class="comment">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                新增文章
+            </div>
+
+            <div class="panel-body">
+                <label>标题：</label>
+                <input id="articleName" class="form-control"/>
+                <label>内容：</label>
+                <textarea id="articleContent" rows="3" class="form-control"></textarea><br/>
+                <label for="TopValue">选项:</label>
+                <input id="TopValue"  name="Top" type="checkbox" value="1">置顶
+                <br/>
+                <label>分类：</label>
+                <input  type="radio" id="articleCategory"  value="1" name="articleCategory">1
+                <input  type="radio" id="articleCategory" value="2" name = "articleCategory">2
+                <input  type="radio" id="articleCategory" value="3" name="articleCategory" checked = checked>更新内容
+                <br/>
+                <label>图片路径：img/name.png</label>
+                <input id="picturlUrl" class="form-control"/>
+                <div class="text-right">
+                    <button id="addBlog" class="btn btn-success">确认添加</button>
+                </div>
+            </div>
+            <!-- /. END PANEL-BODY -->
+        </div>
+        <!-- /. END PANEL -->
+    </div>
+    <!-- /. END COMMENT -->
+
+    <!-- 提示不能为空信息MODAL -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header alert-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">温馨提示：</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>名称和评论内容不能为空！同时希望您能留下您宝贵的Email地址供我们联系！</label>
+                        </div>
+                    </div>
+                    <!-- /. END RWO -->
+                </div>
+                <!-- /. END MODAL BODY -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">我知道了</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /. END MODAL -->
+    <!-- 添加成功提示信息MODAL -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header alert-success">
+                    <h4 class="modal-title">系统提示：</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>添加成功！</label>
+                        </div>
+                    </div>
+                    <!-- /. END RWO -->
+                </div>
+                <!-- /. END MODAL BODY -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="addConfirmBtn">感谢支持</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /. END MODAL -->
+</div>
+
+<!-- 引入尾部 -->
+<script language="javascript" type="text/javascript" src="js/footer.js"></script>
+<!-- 引入自己的JS -->
+<script src="js/addBlog.js"></script>
+</body>
+
+</html>

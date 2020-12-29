@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>zzFree个人博客</title>
+
+    <!-- 引入 JQ 和 Bootstrap -->
+    <script src="js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <!-- 引入自己的CSS -->
+    <link href="css/about.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<!--引入头部-->
+<script language="javascript" type="text/javascript" src="js/header.js"></script>
+<!--题图-->
+<img id="titu" src="img/about/titu.jpg"/>
+<!--主体内容-->
+<div id="content">
+
+    <!-- 关于信息 -->
+    <div class="aboutInfo">
+        <div class="leftInfo">
+            <img src="img/head.jpg">
+            <h2>zzFree</h2>
+            <h4>土堆</h4>
+            <h4>简介:</h4>
+        </div>
+        <div class="rightInfo">
+            <h2>This Is Me：</h2>
+            <div class="aboutArticle">
+                <div class="title">
+                    <a href="https://github.com/zzFreeYang">zzFree的GitHub</a>
+                </div>
+                <div class="summary">
+                    ----
+                </div>
+            </div>
+            <div class="aboutArticle">
+                <div class="title">
+                    <a href="">随笔</a>
+                </div>
+                <div class="summary">
+                    学海无涯苦作舟
+                </div>
+            </div>
+            <div class="aboutArticle">
+                <div class="title">
+                    <a href="">~~~~~~~~~~</a>
+                </div>
+                <div class="summary">
+                    ~~~
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. END ABOUT INFO -->
+
+    <!--留言区-->
+    <div style="margin-top: 60px;">
+        <label>留言列表：</label>
+    </div>
+    <div id="commentList" class="commentList">
+    </div>
+    <!-- /. END COMMENT LIST -->
+
+    <!--新增留言-->
+    <div class="comment">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                新增留言
+            </div>
+            <div class="panel-body">
+                <label>名称：</label>
+                <input id="commentName" class="form-control"/>
+                <label>Email：</label>
+                <input id="commentEmail" class="form-control">
+                <label>评论内容：</label>
+                <textarea id="commentContent" rows="3" class="form-control"></textarea><br/>
+                <div class="text-right">
+                    <button id="addComment" class="btn btn-success">确认添加</button>
+                </div>
+            </div>
+            <!-- /. END PANEL-BODY -->
+        </div>
+        <!-- /. END PANEL -->
+    </div>
+    <!-- /. END COMMENT -->
+
+    <!-- 提示不能为空信息MODAL -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header alert-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">温馨提示：</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>名称和评论内容不能为空！同时希望您能留下您宝贵的Email地址供我们联系！</label>
+                        </div>
+                    </div>
+                    <!-- /. END RWO -->
+                </div>
+                <!-- /. END MODAL BODY -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">我知道了</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /. END MODAL -->
+    <!-- 添加成功提示信息MODAL -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header alert-success">
+                    <h4 class="modal-title">系统提示：</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>添加成功！</label>
+                        </div>
+                    </div>
+                    <!-- /. END RWO -->
+                </div>
+                <!-- /. END MODAL BODY -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="addConfirmBtn">感谢支持</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /. END MODAL -->
+</div>
+
+<!-- 引入尾部 -->
+<script language="javascript" type="text/javascript" src="js/footer.js"></script>
+<!-- 引入自己的JS -->
+<script src="js/about.js"></script>
+</body>
+
+</html>
